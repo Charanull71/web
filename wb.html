@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Problem Statement</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-image: url('poster.jpeg');
+        background-size:auto;
+        background-repeat: no-repeat;
+    }
+    
+    .container {
+        text-align: center;
+    }
+    #generateBtn{
+        margin-top: 300px;
+    }
+    #next{
+        margin-top: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:#0056b3;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #009bb3;
+    }
+
+    .button-disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+    a{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <button id="generateBtn">Generate Random Number</button>
+    <form>
+        <input type="hidden" name="randomNumber" id="randomNumberField">
+        <button id="next"><a href="pbstatement.html">Next</a></button>
+    </form>
+</div><br>
+
+<script>
+    // Function to generate a random number between min and max (inclusive)
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Function to handle button click event
+    document.getElementById('generateBtn').addEventListener('click', function() {
+        var randomNumber = getRandomNumber(2411, 2435); // Generate a random number between 1 and 40
+        document.getElementById('randomNumberField').value = randomNumber; 
+        this.disabled = true; // Disable the button after clicking
+        this.classList.add('button-disabled'); // Add CSS class to style the disabled button
+        this.textContent = 'Generating...'; // Change button text to indicate processing
+        
+        // Simulate a delay for demonstration purposes (remove this line in a real scenario)
+        setTimeout(() => {
+            this.textContent = 'Generated: ' + randomNumber; // Update button text with the generated number
+        }, 1000); // Delay of 1 second (1000 milliseconds)
+    });
+</script>
+</body>
+</html>
+
